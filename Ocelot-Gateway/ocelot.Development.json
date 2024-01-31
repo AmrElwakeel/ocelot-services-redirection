@@ -1,0 +1,59 @@
+{
+  "GlobalConfiguration": {
+    "GlobalConfiguration": {
+      "BaseUrl": "http://localhost:44335"
+    }
+  },
+  "Routes": [
+    {
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "secret",
+        "AllowedScopes": [ ]
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/ServiceOne",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "secret",
+        "AllowedScopes": [ "service-one" ]
+      },
+      "DownstreamPathTemplate": "/ServiceOne",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44384
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/ServiceTwo",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "secret",
+        "AllowedScopes": [ "service-one"]
+      },
+      "DownstreamPathTemplate": "/ServiceTwo",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44358
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/seha",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamPathTemplate": "/",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "www.google.com",
+          "Port": 443
+        }
+      ]
+    }
+  ]
+}
